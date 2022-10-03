@@ -1,0 +1,25 @@
+{
+  "name": "mail-signature",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "flag-icons": "^6.6.6",
+    "v-phone-input": "^3.0.0-alpha.3",
+    "vue": "^3.2.37",
+    "vuetify": "^3.0.0-beta.11"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.0.96",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "vite-plugin-vuetify": "^1.0.0-alpha.17",
+    "vue-tsc": "^0.40.4"
+  }
+}
