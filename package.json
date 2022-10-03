@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "flag-icons": "^6.6.6",
-    "v-phone-input": "^3.0.0-alpha.3",
+    "v-phone-input": "^3.0.0-alpha.4",
     "vue": "^3.2.37",
     "vuetify": "^3.0.0-beta.11"
   },
