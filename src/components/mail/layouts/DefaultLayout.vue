@@ -2,8 +2,9 @@
   lang="ts"
   setup
 >
-import { computed } from 'vue';
+import { computed, PropType } from 'vue';
 import useSignatureState from '../../../composables/useSignatureState';
+import { InputFile } from '../../../utils/fileToInputFile';
 import { Signature } from '../../../utils/signature';
 import AddressTableCell from '../cells/AddressTableCell.vue';
 import DividerTableCell from '../cells/DividerTableCell.vue';
@@ -24,7 +25,7 @@ const props = defineProps({
     type: String,
   },
   avatar: {
-    type: Object,
+    type: Object as PropType<InputFile>,
     default: undefined,
   },
   firstName: {
@@ -52,7 +53,7 @@ const props = defineProps({
     type: String,
   },
   logo: {
-    type: Object,
+    type: Object as PropType<InputFile>,
     default: undefined,
   },
   logoAlt: {
@@ -87,7 +88,7 @@ const signatureState = useSignatureState(computed(() => props as Signature));
 <template>
   <table-block>
     <table-row>
-      <template v-if="signatureState.hasLogo.value">
+      <template v-if="props.logo">
         <logo-table-cell
           :logo="props.logo"
           :logo-alt="props.logoAlt"

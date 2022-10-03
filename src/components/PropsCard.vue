@@ -3,7 +3,8 @@
   setup
 >
 import { VPhoneInput } from 'v-phone-input';
-import { reactive, watch } from 'vue';
+import { PropType, reactive, watch } from 'vue';
+import { InputFile } from '../utils/fileToInputFile';
 import { Signature } from '../utils/signature';
 import FileInput from './form/FileInput.vue';
 
@@ -19,7 +20,7 @@ const props = defineProps({
     type: String,
   },
   avatar: {
-    type: Object,
+    type: Object as PropType<InputFile>,
     default: undefined,
   },
   firstName: {
@@ -47,7 +48,7 @@ const props = defineProps({
     type: String,
   },
   logo: {
-    type: Object,
+    type: Object as PropType<InputFile>,
     default: undefined,
   },
   logoAlt: {

@@ -10,7 +10,7 @@ import LogoImage from './LogoImage.vue';
 
 type Props = {
   logo: InputFile,
-  logoAlt?: string,
+  logoAlt: string,
   website: string,
 }
 

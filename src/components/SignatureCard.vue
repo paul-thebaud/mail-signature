@@ -2,9 +2,10 @@
   lang="ts"
   setup
 >
-import { computed, ref } from 'vue';
+import { computed, PropType, ref } from 'vue';
 import useSignatureState from '../composables/useSignatureState';
 import downloadAsFile from '../utils/downloadAsFile';
+import { InputFile } from '../utils/fileToInputFile';
 import { Signature } from '../utils/signature';
 import DefaultLayout from './mail/layouts/DefaultLayout.vue';
 
@@ -16,7 +17,7 @@ const props = defineProps({
     type: String,
   },
   avatar: {
-    type: Object,
+    type: Object as PropType<InputFile>,
     default: undefined,
   },
   firstName: {
@@ -44,7 +45,7 @@ const props = defineProps({
     type: String,
   },
   logo: {
-    type: Object,
+    type: Object as PropType<InputFile>,
     default: undefined,
   },
   logoAlt: {
@@ -113,7 +114,7 @@ const onDownloadJsonConfig = () => {
 };
 
 const onCopyContentToClipboard = () => {
-  copyToClipboard(signatureRef.value.$el.outerHTML, 'text/html');
+  copyToClipboard(signatureRef.value?.$el?.outerHTML, 'text/html');
 };
 </script>
 
