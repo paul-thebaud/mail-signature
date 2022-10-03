@@ -532,10 +532,10 @@ upath@^2.0.1:
   resolved "https://registry.yarnpkg.com/upath/-/upath-2.0.1.tgz#50c73dea68d6f6b990f51d279ce6081665d61a8b"
   integrity sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==
 
-v-phone-input@^3.0.0-alpha.4:
-  version "3.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/v-phone-input/-/v-phone-input-3.0.0-alpha.4.tgz#2963ed76cd80c924bedd82557a34f3d8a54924a1"
-  integrity sha512-rl7eU+PM9FxoklTFJrP5G91bBGeO9zIzvXKviwlFKIo4/V3czFtShH/2DTEcqaELkofDUFfxJmQXLcIIdwQ/Gg==
+v-phone-input@^3.0.0-alpha.5:
+  version "3.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/v-phone-input/-/v-phone-input-3.0.0-alpha.5.tgz#73b3e19b4a4de5414860f0596901d0ea35fe9c05"
+  integrity sha512-WemQZrPT/70NTOZOyYhSHNTtfqQ3CWcvQkGtK1GI/RzEN4c5gdM+EL4ebsd+1Dv4ZJbLvcqHw1Jcs/TGMbIWig==
   dependencies:
     awesome-phonenumber "^3.0.0"
     country-telephone-data "^0.6.3"
