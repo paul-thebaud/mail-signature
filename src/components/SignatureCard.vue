@@ -89,10 +89,10 @@ const resetState = () => {
 const copyToClipboard = async (content: string, mimeType: string) => {
   resetState();
 
-  const clipboardContentBlob = new Blob([content], { type: mimeType });
-  const clipboardItem = new ClipboardItem({ [mimeType]: clipboardContentBlob });
-
   try {
+    const clipboardContentBlob = new Blob([content], { type: mimeType });
+    const clipboardItem = new ClipboardItem({ [mimeType]: clipboardContentBlob });
+
     await navigator.clipboard.write([clipboardItem]);
 
     copySuccess.value = true;
@@ -177,7 +177,19 @@ const onCopyContentToClipboard = () => {
           density="compact"
           class="mt-5"
           border
-        />
+        >
+          Copy to clipboard failed. Your browser must be
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API#browser_compatibility"
+            target="_blank"
+            rel="noopener"
+          >
+            compatible with the Clipboard API.
+            <span class="d-sr-only">
+              (open in new tab)
+            </span>
+          </a>
+        </v-alert>
         <v-alert
           v-else-if="downloadSuccess"
           text="Downloaded config successfully!"
