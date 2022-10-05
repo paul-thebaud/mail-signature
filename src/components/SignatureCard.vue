@@ -12,6 +12,14 @@ import DefaultLayout from './mail/layouts/DefaultLayout.vue';
 const signatureRef = ref<InstanceType<typeof DefaultLayout> | null>(null);
 
 const props = defineProps({
+  logoWidth: {
+    required: true,
+    type: [Number, String],
+  },
+  signatureMaxWidth: {
+    required: true,
+    type: [Number, String],
+  },
   color: {
     required: true,
     type: String,
@@ -80,6 +88,12 @@ const downloadSuccess = ref(false);
 const copySuccess = ref(false);
 const copyError = ref(false);
 
+const signatureStyle = computed(() => ({
+  'max-width': props.signatureMaxWidth > 0
+    ? `${Math.ceil(props.signatureMaxWidth as number)}px`
+    : undefined,
+}));
+
 const resetState = () => {
   downloadSuccess.value = false;
   copySuccess.value = false;
@@ -128,6 +142,7 @@ const onCopyContentToClipboard = () => {
         <v-card-text style="min-width: 400px;">
           <default-layout
             ref="signatureRef"
+            :style="signatureStyle"
             v-bind="props"
           />
         </v-card-text>

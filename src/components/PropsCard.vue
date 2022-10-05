@@ -15,6 +15,14 @@ type Emits = {
 const emit = defineEmits<Emits>();
 
 const props = defineProps({
+  logoWidth: {
+    required: true,
+    type: [Number, String],
+  },
+  signatureMaxWidth: {
+    required: true,
+    type: [Number, String],
+  },
   color: {
     required: true,
     type: String,
@@ -104,6 +112,34 @@ watch([signatureData], () => {
                 v-model="signatureData.color"
                 label="Color"
                 placeholder="#0000FF"
+              />
+            </v-col>
+            <v-col
+              cols="12"
+              md="6"
+            >
+              <v-text-field
+                v-model.number="signatureData.logoWidth"
+                label="Logo width"
+                placeholder="148"
+                suffix="px"
+                type="number"
+                min="0"
+                step="1"
+              />
+            </v-col>
+            <v-col
+              cols="12"
+              md="6"
+            >
+              <v-text-field
+                v-model.number="signatureData.signatureMaxWidth"
+                label="Signature max width"
+                placeholder="600"
+                suffix="px"
+                type="number"
+                min="0"
+                step="1"
               />
             </v-col>
           </v-row>

@@ -14,6 +14,8 @@ const STORAGE_KEY = 'signature.data';
 const theme = useTheme();
 
 let defaultData = {
+  logoWidth: 148,
+  signatureMaxWidth: 600,
   color: theme.current.value.colors.primary,
   avatar: undefined,
   firstName: '',
@@ -31,12 +33,13 @@ let defaultData = {
   twitter: '',
 } as Signature;
 
+let initialData = { ...defaultData };
 const storageData = localStorage.getItem(STORAGE_KEY);
 if (storageData) {
-  defaultData = { ...defaultData, ...JSON.parse(storageData) };
+  initialData = { ...initialData, ...JSON.parse(storageData) };
 }
 
-const signatureData = ref(defaultData);
+const signatureData = ref(initialData);
 const jsonConfigFileInput = ref<HTMLInputElement | null>(null);
 const jsonConfigFileError = ref<Error | undefined>(undefined);
 
@@ -54,7 +57,7 @@ const onJsonConfigFileChange = async (event: Event) => {
   const files = (event.target as HTMLInputElement).files;
   if (files && files.length === 1) {
     try {
-      onSignatureDataUpdate(await fileToJsonObject(files[0]));
+      onSignatureDataUpdate({ ...defaultData, ...(await fileToJsonObject(files[0])) });
     } catch (error) {
       jsonConfigFileError.value = error as Error;
     }

@@ -1,6 +1,8 @@
 import { InputFile } from './fileToInputFile';
 
 export type Signature = {
+  logoWidth: number | string,
+  signatureMaxWidth: number | string,
   color: string,
   avatar?: InputFile,
   firstName: string,

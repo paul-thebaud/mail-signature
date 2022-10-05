@@ -20,6 +20,14 @@ import TableCell from './../TableCell.vue';
 import TableRow from './../TableRow.vue';
 
 const props = defineProps({
+  logoWidth: {
+    required: true,
+    type: [Number, String],
+  },
+  signatureMaxWidth: {
+    required: true,
+    type: [Number, String],
+  },
   color: {
     required: true,
     type: String,
@@ -92,6 +100,7 @@ const signatureState = useSignatureState(computed(() => props as Signature));
         <logo-table-cell
           :logo="props.logo"
           :logo-alt="props.logoAlt"
+          :logo-width="props.logoWidth"
           :website="props.website"
           style="vertical-align: middle;text-align: center;"
         />

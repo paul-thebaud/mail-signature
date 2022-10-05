@@ -12,6 +12,7 @@ import LogoImage from './LogoImage.vue';
 type Props = {
   logo: InputFile,
   logoAlt: string,
+  logoWidth: number | string,
   website: string,
 }
 
@@ -21,14 +22,16 @@ const { websiteWithHttps } = useWebsite(toRef(props, 'website'));
 
 const { ratio } = useImageRatio(toRef(props, 'logo'));
 
-const width = 148;
+const widthOrDefault = computed(() => (
+  props.logoWidth > 0 ? Math.ceil(props.logoWidth as number) : 148
+));
 const height = computed(() => (
-  ratio.value ? Math.ceil(width / ratio.value) : undefined
+  ratio.value ? Math.ceil(widthOrDefault.value / ratio.value) : undefined
 ));
 </script>
 
 <template>
-  <table-cell :width="width">
+  <table-cell :width="widthOrDefault">
     <a
       v-if="props.website"
       :href="websiteWithHttps"
@@ -39,7 +42,7 @@ const height = computed(() => (
         v-if="height"
         :logo="props.logo"
         :logo-alt="props.logoAlt"
-        :width="width"
+        :width="widthOrDefault"
         :height="height"
       />
     </a>
@@ -47,7 +50,7 @@ const height = computed(() => (
       v-else-if="height"
       :logo="props.logo"
       :logo-alt="props.logoAlt"
-      :width="width"
+      :width="widthOrDefault"
       :height="height"
     />
   </table-cell>
