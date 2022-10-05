@@ -2,7 +2,8 @@
   lang="ts"
   setup
 >
-import { toRef } from 'vue';
+import { computed, toRef } from 'vue';
+import useImageRatio from '../../../composables/useImageRatio';
 import useWebsite from '../../../composables/useWebsite';
 import { InputFile } from '../../../utils/fileToInputFile';
 import TableCell from './../TableCell.vue';
@@ -17,10 +18,17 @@ type Props = {
 const props = defineProps<Props>();
 
 const { websiteWithHttps } = useWebsite(toRef(props, 'website'));
+
+const { ratio } = useImageRatio(toRef(props, 'logo'));
+
+const width = 148;
+const height = computed(() => (
+  ratio.value ? Math.ceil(width / ratio.value) : undefined
+));
 </script>
 
 <template>
-  <table-cell width="148">
+  <table-cell :width="width">
     <a
       v-if="props.website"
       :href="websiteWithHttps"
@@ -28,14 +36,19 @@ const { websiteWithHttps } = useWebsite(toRef(props, 'website'));
       style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;"
     >
       <logo-image
+        v-if="height"
         :logo="props.logo"
         :logo-alt="props.logoAlt"
+        :width="width"
+        :height="height"
       />
     </a>
     <logo-image
-      v-else
+      v-else-if="height"
       :logo="props.logo"
       :logo-alt="props.logoAlt"
+      :width="width"
+      :height="height"
     />
   </table-cell>
 </template>
