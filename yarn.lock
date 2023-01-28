@@ -532,10 +532,10 @@ upath@^2.0.1:
   resolved "https://registry.yarnpkg.com/upath/-/upath-2.0.1.tgz#50c73dea68d6f6b990f51d279ce6081665d61a8b"
   integrity sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==
 
-v-phone-input@^3.0.0-alpha.5:
-  version "3.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/v-phone-input/-/v-phone-input-3.0.0-alpha.5.tgz#73b3e19b4a4de5414860f0596901d0ea35fe9c05"
-  integrity sha512-WemQZrPT/70NTOZOyYhSHNTtfqQ3CWcvQkGtK1GI/RzEN4c5gdM+EL4ebsd+1Dv4ZJbLvcqHw1Jcs/TGMbIWig==
+v-phone-input@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/v-phone-input/-/v-phone-input-3.0.0.tgz#d76933ed7f142d138ebd16d845d5eab79beabfa7"
+  integrity sha512-WP4BWv1K0edwz3+t21WrZ3sTnYA6kF2QxHiF1px87Q4jDxS/VILRvk0liy3rFWKxWEuHY7xEGsdMHpQ2bXbrBQ==
   dependencies:
     awesome-phonenumber "^3.0.0"
     country-telephone-data "^0.6.3"
@@ -583,10 +583,10 @@ vue@^3.2.37:
     "@vue/server-renderer" "3.2.40"
     "@vue/shared" "3.2.40"
 
-vuetify@^3.0.0-beta.11:
-  version "3.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.0.0-beta.11.tgz#069e5583ef2eb2c56f6d1a47977e926cfcc0dcb7"
-  integrity sha512-WHwHNRpnDZ2ZUaOlL3oSnIvVSz0kVLmF/OVQUupIYvgV8pERgFN2NtXN5E3bq/DQkMyYcEUcnSQIrzQs2aZ36A==
+vuetify@^3.0.0:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.1.2.tgz#93a632c6e943200cd6e4b63440f34e7c24eb88f0"
+  integrity sha512-vzxfVc1KlEmZ6tHjmrKCt25rKL6YkakbvQAZ0f/s03kHd0pjXKX4pcWuYgA5mZz4yrfZh/cRHvgGt+7A9CXOVg==
 
 world-flags-sprite@^0.0.2:
   version "0.0.2"
