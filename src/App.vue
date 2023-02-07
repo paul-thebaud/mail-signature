@@ -42,7 +42,9 @@ if (storageData) {
 }
 
 const signatureData = ref(initialData);
+const jsonConfigFileDragging = ref(false);
 const jsonConfigFileInput = ref<HTMLInputElement | null>(null);
+const jsonConfigFileSuccess = ref(false);
 const jsonConfigFileError = ref<Error | undefined>(undefined);
 
 const size = computed(() => (xs.value ? 'small' : 'large'));
@@ -53,24 +55,69 @@ const onSignatureDataUpdate = (data: Signature) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
-const onImportJsonConfigClick = () => {
-  jsonConfigFileInput.value?.click();
-};
+const onJsonConfigFilesInput = async (files: FileList | null) => {
+  jsonConfigFileSuccess.value = false;
 
-const onJsonConfigFileChange = async (event: Event) => {
-  const files = (event.target as HTMLInputElement).files;
   if (files && files.length === 1) {
     try {
       onSignatureDataUpdate({ ...defaultData, ...(await fileToJsonObject(files[0])) });
+
+      jsonConfigFileSuccess.value = true;
     } catch (error) {
       jsonConfigFileError.value = error as Error;
     }
   }
 };
+
+const onJsonConfigDragenter = () => {
+  jsonConfigFileDragging.value = true;
+};
+
+const onJsonConfigDragover = () => {
+  jsonConfigFileDragging.value = true;
+};
+
+const onJsonConfigDragleave = () => {
+  jsonConfigFileDragging.value = false;
+};
+
+const onJsonConfigDrop = (event: DragEvent) => {
+  event.preventDefault();
+  jsonConfigFileDragging.value = false;
+
+  const { files } = event.dataTransfer || { files: null };
+
+  onJsonConfigFilesInput(files);
+};
+
+const onImportJsonConfigClick = () => {
+  jsonConfigFileInput.value?.click();
+};
+
+const onJsonConfigFileChange = (event: Event) => {
+  onJsonConfigFilesInput((event.target as HTMLInputElement).files);
+};
 </script>
 
 <template>
-  <v-app>
+  <v-app
+    @dragenter.prevent="onJsonConfigDragenter"
+    @dragleave.prevent="onJsonConfigDragleave"
+    @dragover.prevent="onJsonConfigDragover"
+    @drop.prevent="onJsonConfigDrop"
+  >
+    <v-fade-transition>
+      <div
+        v-show="jsonConfigFileDragging"
+        class="drag-overlay"
+      >
+        <v-icon
+          icon="mdi-tray-arrow-up"
+          color="primary"
+          size="128"
+        />
+      </div>
+    </v-fade-transition>
     <v-main>
       <v-container class="my-4 my-md-12">
         <header class="mb-4 mb-md-8">
@@ -130,6 +177,17 @@ const onJsonConfigFileChange = async (event: Event) => {
               >
               <v-slide-y-transition>
                 <v-alert
+                  v-if="jsonConfigFileSuccess"
+                  text="Successfully imported config file."
+                  type="success"
+                  variant="tonal"
+                  density="compact"
+                  class="mt-5"
+                  border
+                />
+              </v-slide-y-transition>
+              <v-slide-y-transition>
+                <v-alert
                   v-if="jsonConfigFileError"
                   :text="`Error with file importation: ${jsonConfigFileError.message}`"
                   type="error"
@@ -175,3 +233,22 @@ const onJsonConfigFileChange = async (event: Event) => {
     </v-main>
   </v-app>
 </template>
+
+<style scoped>
+  .drag-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+    border-width: 4px;
+    border-style: dashed;
+    border-color: rgb(var(--v-theme-primary));
+    background: rgb(var(--v-theme-on-surface), 0.12);
+  }
+</style>
