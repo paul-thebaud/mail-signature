@@ -22,7 +22,7 @@ let defaultData = {
   firstName: '',
   lastName: '',
   title: '',
-  hours: '',
+  activities: '',
   phone: '',
   email: '',
   address: '',

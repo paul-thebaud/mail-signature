@@ -6,10 +6,10 @@ import { computed, PropType } from 'vue';
 import useSignatureState from '../../../composables/useSignatureState';
 import { InputFile } from '../../../utils/fileToInputFile';
 import { Signature } from '../../../utils/signature';
+import ActivitiesTableCell from '../cells/ActivitiesTableCell.vue';
 import AddressTableCell from '../cells/AddressTableCell.vue';
 import DividerTableCell from '../cells/DividerTableCell.vue';
 import EmailTableCell from '../cells/EmailTableCell.vue';
-import HoursTableCell from '../cells/HoursTableCell.vue';
 import LogoTableCell from '../cells/LogoTableCell.vue';
 import PaddingTableCell from '../cells/PaddingTableCell.vue';
 import PhoneTableCell from '../cells/PhoneTableCell.vue';
@@ -49,8 +49,8 @@ const props = defineProps({
     required: true,
     type: String,
   },
-  hours: {
-    required : true,
+  activities: {
+    required: true,
     type: String,
   },
   phone: {
@@ -121,8 +121,8 @@ const signatureState = useSignatureState(computed(() => props as Signature));
               :title="props.title"
             />
           </table-row>
-          <table-row v-if="signatureState.hasHours.value">
-            <hours-table-cell :hours="props.hours" />
+          <table-row v-if="signatureState.hasActivities.value">
+            <activities-table-cell :activities="props.activities" />
           </table-row>
           <table-row v-if="signatureState.hasEmail.value">
             <email-table-cell :email="props.email" />

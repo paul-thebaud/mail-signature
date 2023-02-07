@@ -8,7 +8,7 @@ export type Signature = {
   firstName: string,
   lastName: string,
   title: string,
-  hours: string,
+  activities: string,
   phone: string,
   email: string,
   address: string,

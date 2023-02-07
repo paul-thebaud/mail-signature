@@ -5,7 +5,7 @@ export default function useSignatureState(signature: Ref<Signature>) {
   const hasLogo = computed(() => !!signature.value.logo);
   const hasPhone = computed(() => !!signature.value.phone);
   const hasEmail = computed(() => !!signature.value.email);
-  const hasHours = computed(() => !!signature.value.hours);
+  const hasActivities = computed(() => !!signature.value.activities);
   const hasAddress = computed(() => !!signature.value.address);
   const hasInformation = computed(() => !!(
     signature.value.avatar
@@ -35,7 +35,7 @@ export default function useSignatureState(signature: Ref<Signature>) {
     hasLogo,
     hasPhone,
     hasEmail,
-    hasHours,
+    hasActivities,
     hasAddress,
     hasInformation,
     hasWebsite,

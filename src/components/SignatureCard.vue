@@ -40,7 +40,7 @@ const props = defineProps({
     required: true,
     type: String,
   },
-  hours: {
+  activities: {
     required: true,
     type: String,
   },
