@@ -9,6 +9,7 @@ import { Signature } from '../../../utils/signature';
 import AddressTableCell from '../cells/AddressTableCell.vue';
 import DividerTableCell from '../cells/DividerTableCell.vue';
 import EmailTableCell from '../cells/EmailTableCell.vue';
+import HoursTableCell from '../cells/HoursTableCell.vue';
 import LogoTableCell from '../cells/LogoTableCell.vue';
 import PaddingTableCell from '../cells/PaddingTableCell.vue';
 import PhoneTableCell from '../cells/PhoneTableCell.vue';
@@ -46,6 +47,10 @@ const props = defineProps({
   },
   title: {
     required: true,
+    type: String,
+  },
+  hours: {
+    required : true,
     type: String,
   },
   phone: {
@@ -115,6 +120,9 @@ const signatureState = useSignatureState(computed(() => props as Signature));
               :last-name="props.lastName"
               :title="props.title"
             />
+          </table-row>
+          <table-row v-if="signatureState.hasHours.value">
+            <hours-table-cell :hours="props.hours" />
           </table-row>
           <table-row v-if="signatureState.hasEmail.value">
             <email-table-cell :email="props.email" />

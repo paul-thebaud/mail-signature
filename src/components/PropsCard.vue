@@ -43,6 +43,10 @@ const props = defineProps({
     required: true,
     type: String,
   },
+  hours: {
+    required: true,
+    type: String,
+  },
   phone: {
     required: true,
     type: String,
@@ -182,6 +186,14 @@ watch([signatureData], () => {
                 label="Job title"
                 prepend-inner-icon="mdi-briefcase-outline"
                 placeholder="Sales director"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                v-model="signatureData.hours"
+                label="Hours"
+                prepend-inner-icon="mdi-clock"
+                placeholder="Clock"
               />
             </v-col>
             <v-col cols="12">

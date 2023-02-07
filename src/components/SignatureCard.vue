@@ -40,6 +40,10 @@ const props = defineProps({
     required: true,
     type: String,
   },
+  hours: {
+    required: true,
+    type: String,
+  },
   phone: {
     required: true,
     type: String,
