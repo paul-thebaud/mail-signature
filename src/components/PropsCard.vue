@@ -195,6 +195,7 @@ watch([signatureData], () => {
                 label="Activities"
                 prepend-inner-icon="mdi-clock-outline"
                 placeholder="Development: monday & tuesday&#10;Project follow-up: wednesday"
+                rows="2"
               />
             </v-col>
             <v-col cols="12">

@@ -6,8 +6,8 @@ import { InputFile } from '../../../utils/fileToInputFile';
 import TableBlock from '../TableBlock.vue';
 import TableRow from '../TableRow.vue';
 import TableCell from './../TableCell.vue';
+import MultilineContent from './MultilineContent.vue';
 import PaddingTableCell from './PaddingTableCell.vue';
-import { computed } from 'vue';
 
 type Props = {
   avatar?: InputFile
@@ -17,8 +17,6 @@ type Props = {
 }
 
 const props = defineProps<Props>();
-
-const titleParts = computed(() => props.title.split(/\r\n|\n|\r/));
 </script>
 
 <template>
@@ -46,13 +44,7 @@ const titleParts = computed(() => props.title.split(/\r\n|\n|\r/));
             </strong>
           </p>
           <p style="margin: 0px; color: rgb(0, 0, 0); font-size: 14px; line-height: 22px;">
-            <template
-              v-for="(titlePart, index) in titleParts"
-              :key="`parts-${index}`"
-            >
-            <br v-if="index !== 0">
-            {{ titlePart }}
-            </template>
+            <multiline-content :content="title" />
           </p>
         </table-cell>
       </table-row>

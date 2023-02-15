@@ -2,8 +2,8 @@
   lang="ts"
   setup
 >
-import { computed } from 'vue';
 import mdiMapMarker from '../../../icons/mdiMapMarker';
+import MultilineContent from './MultilineContent.vue';
 import PrependIconTableCell from './PrependIconTableCell.vue';
 
 type Props = {
@@ -11,21 +11,12 @@ type Props = {
 }
 
 const props = defineProps<Props>();
-
-const addressParts = computed(() => props.address.split(/\r\n|\n|\r/));
 </script>
 
 <template>
   <prepend-icon-table-cell :icon="mdiMapMarker">
-    <template
-      v-for="(addressPart, index) in addressParts"
-      :key="`parts-${index}`"
-    >
-      <br v-if="index !== 0">
-      <span
-        style="margin: 0px; color: rgb(0, 0, 0); font-size: 12px;"
-        v-text="addressPart"
-      />
-    </template>
+    <span style="margin: 0px; color: rgb(0, 0, 0); font-size: 12px;">
+      <multiline-content :content="address" />
+    </span>
   </prepend-icon-table-cell>
 </template>
