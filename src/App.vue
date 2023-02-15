@@ -133,7 +133,7 @@ const onJsonConfigFileChange = (event: Event) => {
           <div class="d-flex align-center justify-center flex-wrap">
             <v-btn
               :size="size"
-              href="url"
+              href="https://github.com/paul-thebaud/mail-signature"
               target="_blank"
               rel="noopener"
               variant="text"
