@@ -18,5 +18,6 @@ export default createVuetify({
   },
   defaults: {
     VTextField: { color: 'primary' },
+    VTextarea: { color: 'primary' },
   },
 });
