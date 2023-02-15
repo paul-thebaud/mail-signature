@@ -181,11 +181,12 @@ watch([signatureData], () => {
               />
             </v-col>
             <v-col cols="12">
-              <v-text-field
+              <v-textarea
                 v-model="signatureData.title"
                 label="Job title"
                 prepend-inner-icon="mdi-briefcase-outline"
                 placeholder="Sales director"
+                rows="2"
               />
             </v-col>
             <v-col cols="12">
