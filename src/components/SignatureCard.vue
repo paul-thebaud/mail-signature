@@ -134,6 +134,10 @@ const onDownloadJsonConfig = () => {
 const onCopyContentToClipboard = () => {
   copyToClipboard(signatureRef.value?.$el?.outerHTML, 'text/html');
 };
+
+const onCopyRawContentToClipboard = () => {
+  copyToClipboard(signatureRef.value?.$el?.outerHTML, 'text/plain');
+};
 </script>
 
 <template>
@@ -175,6 +179,17 @@ const onCopyContentToClipboard = () => {
               start
             />
             Copy
+          </v-btn>
+          <v-btn
+            color="primary"
+            variant="flat"
+            @click="onCopyRawContentToClipboard"
+          >
+            <v-icon
+              icon="mdi-content-copy"
+              start
+            />
+            Copy Raw
           </v-btn>
         </v-card-actions>
       </v-card>
